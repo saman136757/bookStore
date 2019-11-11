@@ -16,12 +16,44 @@ $(document).ready(function () {
 
 
             success: function (response) {
-                window.location.replace('/login')
+                window.location.reload()
             }
         });
 
 
     });
+
+    $('#search').click(function (e) {
+
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "/search",
+            data: {
+                id: $('#searchInputId').val(),
+                authers: $('#searchInputAuthers').val(),
+                subject: $('#searchInputSubject').val(),
+                publisher: $('#searchInputPublisher').val(),
+                price: $('#searchInputPrice').val(),
+            },
+           
+            success: function (response) {
+                for(i=0;i<response.bookStore.length;i++){
+                    $('#myrow'+i+'').remove();
+                }
+                
+                
+                for (i = 0; i < response.bookStore.length; i++) {
+                    allbodys = '<tr id="myrow' + i + '"> <td>' + response.bookStore[i].id + '</td><td>' + response.bookStore[i].authers + '</td><td>' + response.bookStore[i].subject + '</td><td>' + response.bookStore[i].publisher + '</td><td>' + response.bookStore[i].price + '</td></tr>'
+                    $('#allBodySearch').append(allbodys);
+                }
+            },
+        });
+       
+    });
+
+
+  
     $('#showAllbook').click(function (e) {
 
         e.preventDefault();
@@ -29,10 +61,10 @@ $(document).ready(function () {
             type: "GET",
             url: "showAllbooks",
             success: function (response) {
-                console.log(response)
-                for (i = 0; i < response.bookStore.length; i++) {
-                    $('#myrow' + i + '').remove();
+                for(i=0;i<response.bookStore.length;i++){
+                    $('#myrow'+i+'').remove();
                 }
+            
                 for (i = 0; i < response.bookStore.length; i++) {
                     allbody = '<tr id="myrow' + i + '"><td>' + response.bookStore[i].id + '</td><td>' + response.bookStore[i].authers + '</td><td>' + response.bookStore[i].subject + '</td><td>' + response.bookStore[i].publisher + '</td><td>' + response.bookStore[i].price + '</td></tr>'
                     $('#allBody').append(allbody);
@@ -57,8 +89,7 @@ $(document).ready(function () {
             },
 
             success: function (response) {
-                window.location.replace('/login')
-
+                window.location.reload()
 
 
 
@@ -79,7 +110,7 @@ $(document).ready(function () {
                 price: $('#price').val(),
             },
             success: function (response) {
-                window.location.replace('/login')
+                window.location.reload()
 
             }
         });
@@ -87,6 +118,6 @@ $(document).ready(function () {
 
     });
 
-
+    
 
 });

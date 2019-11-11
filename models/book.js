@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 var bookSchema = new Schema({
     id: {
-        unique: true,
+        //unique: true,
         type: String,
         //required: true,
         trim: true

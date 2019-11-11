@@ -36,6 +36,37 @@
 
     <div class="row">
 
+        <div class="row">
+            <button id="search" style="background-color: crimson" class="waves-effect waves-light btn" role="button"
+            aria-disabled="true">search <i class="fas fa-user-times"></i></button>
+            <div class="input-field col s10">
+              <form method="POST">  
+              <input  name= 'searchInputId' id="searchInputId"   placeholder="search id" type="text">
+              <input   name="searchInputAuthers" id="searchInputAuthers"   placeholder="search authers" type="text">
+              <input   name="searchInputSubject" id="searchInputSubject"  placeholder="search subject " type="text">
+              <input  name ="searchInputPublisher" id="searchInputPublisher"  placeholder="search publisher" type="text">
+              <input   name ="searchInputPrice"id="searchInputPrice"  placeholder="search price" type="text">
+            </form>
+            </div>
+            <div id="mybookStore">
+                <table id="MybookTable" class="striped">
+          
+                  <thead>
+                    <tr>
+                      <th data-field="me">id</th>
+                      <th data-field="me">authers</th>
+                      <th data-field="me">subject</th>
+                      <th data-field="myTitle">publisher</th>
+                      <th data-field="myTitle">price</th>
+          
+                    </tr>
+                  </thead>
+                  <tbody id="allBodySearch"></tbody>
+                </table>
+              </div>
+          </div>
+
+
       <!-- LOCAL INFORMATION -->
       <div class="col-sm-6">
         <div class="well">
@@ -47,7 +78,7 @@
               <div class="row">
                 <div class="input-field col s10">
 
-                  <input id="id" placeholder="id  (برای تمام عملیات هاالزامی میباشد)" type="text">
+                  <input id="id" placeholder="id ( الزامی و یونیک)" type="text">
 
                 </div>
               </div>
@@ -61,7 +92,7 @@
               <div class="row">
                 <div class="input-field col s10">
 
-                  <input id="subject" placeholder="subject (  الزامی و یونیک)" type="text">
+                  <input id="subject" placeholder="subject  (برای تمام عملیات هاالزامی میباشد)" type="text">
 
                 </div>
               </div>
@@ -83,19 +114,19 @@
             </form>
           </div>
 
-
+          
 
 
         </div>
-
+       
       </div>
 
-
+      
 
 
     </div>
 
-
+    
 
     <div>
       <button type="button" id="edit" style="background-color:rgb(51, 51, 243)"

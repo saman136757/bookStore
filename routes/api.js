@@ -121,6 +121,77 @@ router.post('/profile', passport.authenticate('local'), async (req, res, next) =
 
 });
 
+//search book
+
+router.post('/search',  async (req, res) => {
+
+  
+ 
+
+    Book.find({ $or: [
+      {id : req.body.id},
+      {authers : req.body.authers},
+      {subject : req.body.subject},
+      {publisher : req.body.publisher} ,
+      {price : req.body.price},
+
+    ] }, (err, bookStore) => {
+      
+      if (err) res.json({
+        bookStore: "DB Error"
+      })
+      return res.json({
+        bookStore
+        })
+        
+      })
+
+      // Book.find( {authers : req.body.authers} , (err, bookStore) => {
+      //   console.log(bookStore)
+      //   if (err) res.json({
+      //     bookStore: "DB Error"
+      //   })
+      //   return res.json({
+      //     bookStore
+      //     })
+          
+      //   })
+
+      //   Book.find( {subject : req.body.subject} , (err, bookStore) => {
+      //     console.log(bookStore)
+      //     if (err) res.json({
+      //       bookStore: "DB Error"
+      //     })
+      //     return res.json({
+      //       bookStore
+      //       })
+            
+      //     })
+
+      //     Book.find( {publisher : req.body.publisher} , (err, bookStore) => {
+      //       console.log(bookStore)
+      //       if (err) res.json({
+      //         bookStore: "DB Error"
+      //       })
+      //       return res.json({
+      //         bookStore
+      //         })
+              
+      //       })
+
+      //       Book.find( {price : req.body.price}, (err, bookStore) => {
+      //         console.log(bookStore)
+      //         if (err) res.json({
+      //           bookStore: "DB Error"
+      //         })
+      //         return res.json({
+      //           bookStore
+      //           })
+                
+      //         })
+  })
+
+
 // add book
 
 router.put('/addBook', (req, res) => {
@@ -130,6 +201,7 @@ router.put('/addBook', (req, res) => {
       msg: 'empty fields'
     });
   }
+  
   Book.findOne({
     id: req.body.id
   }, (err, bookStore) => {
@@ -162,6 +234,7 @@ router.put('/addBook', (req, res) => {
 
 router.get('/showAllbooks', (req, res) => {
   Book.find(({}), (err, bookStore) => {
+    
     if (err) res.json({
       book: "DB Error"
     })
@@ -174,11 +247,12 @@ router.get('/showAllbooks', (req, res) => {
 // edit book
 
 router.post('/editBook', async (req, res) => {
-
+console.log( req.body.id)
   Book.updateOne({
     id: req.body.id
   }, {
     $set: {
+      id: req.body.id,
       authers: req.body.authers,
       subject: req.body.subject,
       publisher: req.body.publisher,
@@ -212,6 +286,7 @@ router.post('/delete', (req, res) => {
     })
   })
 })
+
 
 
 module.exports = router;
