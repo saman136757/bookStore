@@ -1,0 +1,137 @@
+<!-- views/profile.ejs -->
+<!doctype html>
+<html>
+
+<head>
+  <title>Node Authentication</title>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+  <style>
+    body {
+      padding-top: 80px;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+
+
+
+
+  <div class="container">
+
+    <div class="page-header text-center">
+      <h1><span class="fa fa-anchor"></span> Book<h1>
+
+    </div>
+
+    <div class="row">
+
+      <!-- LOCAL INFORMATION -->
+      <div class="col-sm-6">
+        <div class="well">
+          <h3><span class="fa fa-user"></span>book</h3>
+
+
+          <div class="row" id="bookForm">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s10">
+
+                  <input id="id" placeholder="id  (برای تمام عملیات هاالزامی میباشد)" type="text">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s10">
+
+                  <input id="authers" placeholder="authers (برای تمام عملیات هاالزامی میباشد)" type="text">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s10">
+
+                  <input id="subject" placeholder="subject (  الزامی و یونیک)" type="text">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s10">
+
+                  <input id="publisher" placeholder="publisher (برای تمام عملیات هاالزامی میباشد)" type="text">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s10">
+
+                  <input id="price" placeholder="price (برای تمام عملیات هاالزامی میباشد)" type="text">
+
+                </div>
+              </div>
+
+            </form>
+          </div>
+
+
+
+
+        </div>
+
+      </div>
+
+
+
+
+    </div>
+
+
+
+    <div>
+      <button type="button" id="edit" style="background-color:rgb(51, 51, 243)"
+        class="waves-effect waves-light btn">Edit book <i class="fas fa-user-edit"></i></button>
+
+      <button id="delete" style="background-color: crimson" class="waves-effect waves-light btn" role="button"
+        aria-disabled="true">delete book <i class="fas fa-user-times"></i></button>
+      <button id="book" style="background-color: rgb(218, 125, 38)" class="waves-effect waves-light btn" role="button"
+        aria-disabled="true">add book<i class="fas fa-book"></i></button>
+      <button id="showAllbook" style="background-color: rgb(29, 209, 164)" class="waves-effect waves-light btn"
+        role="button" aria-disabled="true">show books <i class="fas fa-archive"></i></button>
+
+
+
+
+    </div>
+
+    <div id="mybookStore">
+      <table id="MybookTable" class="striped">
+
+        <thead>
+          <tr>
+            <th data-field="me">id</th>
+            <th data-field="me">authers</th>
+            <th data-field="me">subject</th>
+            <th data-field="myTitle">publisher</th>
+            <th data-field="myTitle">price</th>
+
+          </tr>
+        </thead>
+        <tbody id="allBody"></tbody>
+      </table>
+    </div>
+
+  </div>
+  <script src="/javascripts/bookDb.js"></script>
+</body>
+
+</html>
